@@ -1,0 +1,64 @@
+.details-container {
+    background: rgb(238, 238, 238);
+    padding: 0 0 5rem 0;
+    font-family: var(--Lexend);
+    background: url(../assets/Abract01.png);
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 100%;
+    background-size: 100%;
+}
+
+.details-container .header{
+    display: flex;
+    flex-direction:row;
+    justify-content:space-around;
+    align-items: center;
+    padding: 0 10rem;
+    background: rgb(255, 255, 255);
+}
+
+.details-container .header h2{
+    width: 40rem;
+}
+
+.details-container .images{
+    height:3em;
+    width:3em;
+}
+
+.details-container .images-1{
+    height:3em;
+    width:3em;
+}
+
+.details-container a{
+    cursor: pointer;
+}
+
+.details-container .blog-1{
+   display:flex;
+   align-items:center;
+   justify-content:center;
+   width:100vw;
+   flex-direction: column;
+}
+
+.details-container .blog-1 img { 
+   width:100vw;
+}
+
+.details-container .cards-content{
+    width:60%;
+    background: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    padding:1em 2em 1em 2em;
+}
+
+.details-container .cards-content p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

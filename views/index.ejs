@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs",{isAuth: isAuth}); %>
+
+    <!----------------------------- Main Site Section ------------------------------>
+
+    <main>
+      <!------------------------ Site Title ---------------------->
+
+      <section class="site-title">
+        <div class="site-background" data-aos="fade-up" data-aos-delay="100">
+          <h3>Tours & Travels</h3>
+          <h1>Amazing Place on Earth</h1>
+          <button class="btn">Explore</button>
+        </div>
+      </section>
+
+      <!------------x----------- Site Title ----------x----------->
+
+      <!-- --------------------- Blog Carousel ----------------- -->
+
+      <section>
+        <div class="blog">
+          <div class="container">
+            <div class="owl-carousel owl-theme blog-post">
+              <% if (topFeatured.length> 0) { %> <% topFeatured.forEach((top,i)=> { %>
+              <div class="blog-content" data-aos="fade-right" data-aos-delay="<%=(i+1)*100%>">
+                <img src="<%=top.image%>" alt="post-1" style="height: 10rem" />
+                <div class="blog-title">
+                  <h3><%=top.title%></h3>
+                  <button class="btn btn-blog">
+                    <a href="blogs/<%=top._id%>">
+                      Read More &nbsp; <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </button>
+                  <span>2 minutes</span>
+                </div>
+              </div>
+              <% }) %> <% } else { %>
+              <p>There are no blogs to display...</p>
+              <% } %>
+            </div>
+            <div class="owl-navigation">
+              <span class="owl-nav-prev"><i class="fas fa-long-arrow-alt-left"></i></span>
+              <span class="owl-nav-next"><i class="fas fa-long-arrow-alt-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ----------x---------- Blog Carousel --------x-------- -->
+
+      <!-- ---------------------- Site Content -------------------------->
+
+      <section class="container">
+        <div class="site-content">
+          <div class="posts">
+            <% if (blogs.length> 0) { %> <% blogs.forEach(blog=> { %>
+            <div class="post-content" data-aos="zoom-in" data-aos-delay="200">
+              <div class="post-image">
+                <div>
+                  <img src="<%=blog.image%>" class="img" alt="blog" />
+                </div>
+                <div class="post-info flex-row">
+                  <span><i class="fas fa-user text-gray"></i>&nbsp;&nbsp;<%=blog.name%></span>
+                  <span
+                    ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;
+                    <%=blog.updatedAt.toString().substring(0, 21)%>
+                  </span>
+                  <span>2 Comments</span>
+                </div>
+              </div>
+              <div class="post-title">
+                <a href="blogs/<%=blog._id%>"> <%=blog.title%> </a>
+                <p><%=blog.snippet%></p>
+                <button class="btn post-btn">
+                  <a href="blogs/<%=blog._id%>"
+                    >Read More &nbsp; <i class="fas fa-arrow-right"></i
+                  ></a>
+                </button>
+              </div>
+            </div>
+            <hr />
+            <% }) %> <% } else { %>
+            <p>There are no blogs to display...</p>
+            <% } %> <% if (pages> 0) { %>
+            <div class="pagination flex-row">
+              <a href="#"><i class="fas fa-chevron-left"></i></a>
+              <% var i=(Number(page)> 5 ? Number(page) - 4 : 1) %> <% for (; i <=(Number(page) + 4)
+              && i <=pages; i++) { %>
+              <a href="blogs?page=<%=i%>" class="pages"> <%=i%> </a>
+              <% } %>
+              <a href="blogs?page=<%=pages%>" class="pages">Last</a>
+              <a href="#"><i class="fas fa-chevron-right"></i></a>
+            </div>
+            <% } %>
+          </div>
+          <aside class="sidebar">
+            <div class="category">
+              <h2>Category</h2>
+              <ul class="category-list">
+                <%const cat = Object.keys(categories) %> <% for (let i=0; i< cat.length; i++) { %>
+                <li class="list-items" data-aos="fade-left" data-aos-delay="<%=(i+1)*100%>">
+                  <a href="/blogs?category=<%=cat[i]%>"><%=cat[i]%></a>
+                  <span>(<%=categories[cat[i]]%>)</span>
+                </li>
+                <%}%>
+              </ul>
+            </div>
+            <div class="popular-post">
+              <h2>Popular Post</h2>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="200">
+                <div class="post-image">
+                  <div>
+                    <img src="./assets/popular-post/m-blog-1.jpg" class="img" alt="blog1" />
+                  </div>
+                  <div class="post-info flex-row">
+                    <span
+                      ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                      2019</span
+                    >
+                    <span>2 Commets</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="300">
+                <div class="post-image">
+                  <div>
+                    <img src="./assets/popular-post/m-blog-2.jpg" class="img" alt="blog1" />
+                  </div>
+                  <div class="post-info flex-row">
+                    <span
+                      ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                      2019</span
+                    >
+                    <span>2 Commets</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="400">
+                <div class="post-image">
+                  <div>
+                    <img src="./assets/popular-post/m-blog-3.jpg" class="img" alt="blog1" />
+                  </div>
+                  <div class="post-info flex-row">
+                    <span
+                      ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                      2019</span
+                    >
+                    <span>2 Commets</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="500">
+                <div class="post-image">
+                  <div>
+                    <img src="./assets/popular-post/m-blog-4.jpg" class="img" alt="blog1" />
+                  </div>
+                  <div class="post-info flex-row">
+                    <span
+                      ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                      2019</span
+                    >
+                    <span>2 Commets</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+              <div class="post-content" data-aos="flip-up" data-aos-delay="600">
+                <div class="post-image">
+                  <div>
+                    <img src="./assets/popular-post/m-blog-5.jpg" class="img" alt="blog1" />
+                  </div>
+                  <div class="post-info flex-row">
+                    <span
+                      ><i class="fas fa-calendar-alt text-gray"></i>&nbsp;&nbsp;January 14,
+                      2019</span
+                    >
+                    <span>2 Commets</span>
+                  </div>
+                </div>
+                <div class="post-title">
+                  <a href="#">New data recording system to better analyse road accidents</a>
+                </div>
+              </div>
+            </div>
+            <div class="newsletter" data-aos="fade-up" data-aos-delay="300">
+              <h2>Search Blog</h2>
+              <div class="form-element">
+                <input
+                  id="searchBlog"
+                  type="text"
+                  class="input-element"
+                  placeholder="Search a blog..."
+                />
+                <button class="btn form-btn">
+                  <i class="fas fa-search"></i>&nbsp;Search<i
+                    class="fa fa-microphone"
+                    aria-hidden="true"
+                  ></i>
+                </button>
+              </div>
+            </div>
+            <div class="popular-tags">
+              <h2>Popular Tags</h2>
+              <div class="tags flex-row">
+                <span class="tag" data-aos="flip-up" data-aos-delay="100">Software</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="200">technology</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="300">travel</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="400">illustration</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="500">design</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="600">lifestyle</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="700">love</span>
+                <span class="tag" data-aos="flip-up" data-aos-delay="800">project</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- -----------x---------- Site Content -------------x------------>
+    </main>
+
+    <!---------------x------------- Main Site Section ---------------x-------------->
+    <%- include("./partials/footer.ejs") %>
+    <script>
+      const search = document.getElementById('searchBlog')
+      const searchButton = document.querySelector('.newsletter button')
+      searchButton.addEventListener('click', () => {
+        window.location.href = `/blogs?keyword=${search.value}`
+      })
+      var Tawk_API = Tawk_API || {},
+        Tawk_LoadStart = new Date()
+      ;(function () {
+        var s1 = document.createElement('script'),
+          s0 = document.getElementsByTagName('script')[0]
+        s1.async = true
+        s1.src = 'https://embed.tawk.to/5fbb9a37920fc91564c9b757/default'
+        s1.charset = 'UTF-8'
+        s1.setAttribute('crossorigin', '*')
+        s0.parentNode.insertBefore(s1, s0)
+      })()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs",{isAuth: isAuth}) %>
+
+    <div class="create-blog content">
+      <form action="/blogs/create" enctype="multipart/form-data" method="POST">
+        <label for="title">Blog title:</label>
+        <input type="text" id="title" name="title" required />
+        <label for="snippet">Blog snippet:</label>
+        <input type="text" id="snippet" name="snippet" required />
+        <label for="category">Blog category:</label>
+        <input type="text" id="category" name="category" required />
+        <label for="body">Blog body:</label>
+        <textarea id="body" name="body" required></textarea>
+        <label for="image">Blog Image:</label>
+        <input type="file" id="image" name="image" required></input>
+        <button>Submit</button>
+      </form>
+    </div>
+
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>

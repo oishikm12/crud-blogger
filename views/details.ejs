@@ -1,0 +1,58 @@
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    <%- include("./partials/nav.ejs",{isAuth: isAuth}) %>
+
+    <div class="details-container">
+      <div class="header">
+        <i class="fas fa-user-circle fa-4x"></i>
+        <div class="top-header">
+          <h2 class="heading"><%=blog.title%></h2>
+          <h6>
+            <u><%=blog.name%></u> · <%=blog.updatedAt.toString().substring(0, 10)%> ·
+            <%=Math.round(blog.body.length / 600)%> min read
+          </h6>
+        </div>
+
+        <div class="icons">
+          <a class="upload" href="/blogs/update/<%=blog._id%>">
+            <i class="fas fa-pencil-alt fa-2x"></i> &nbsp;
+          </a>
+          <a class="delete"> &nbsp;<i class="fas fa-trash fa-2x"></i> </a>
+        </div>
+      </div>
+      <div class="blog-1">
+        <img src="<%=blog.image%>" alt="blog-post" />
+
+        <div class="cards-content">
+          <!-- <h5>7 Experiences My Toddler Will Miss Due to the Corona</h5>
+                            <div class="line"></div> -->
+          <p><%=blog.body%></p>
+        </div>
+      </div>
+    </div>
+    <%- include("./partials/footer.ejs") %>
+
+    <script>
+      const trashcan = document.querySelector('a.delete')
+
+      trashcan.addEventListener('click', async (e) => {
+        const endpoint = '/blogs/<%=blog._id%>'
+        console.log(endpoint)
+        if ('<%=uId%>' == '<%=blog.user%>') {
+          try {
+            window.location.href = '/blogs'
+            const resp = await fetch(endpoint, {
+              method: 'DELETE',
+            })
+          } catch (e) {
+            console.log(e)
+          }
+        } else {
+          alert("This Blog Doesn't Belong To You So Kindly FO")
+        }
+      })
+    </script>
+  </body>
+</html>

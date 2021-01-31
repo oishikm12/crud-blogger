@@ -1,0 +1,33 @@
+    .create-blog form{
+      max-width: 400px;
+      margin: 7rem auto;
+      font-family: var(--Lexend);
+    }
+    .create-blog input,
+    .create-blog textarea{
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+    .create-blog label{
+      display: block;
+      margin-top: 24px;
+    }
+    .create-blog textarea{
+      height: 120px;
+    }
+    .create-blog button{
+      margin-top: 20px;
+      background: #1b1b1b;
+      color: white;
+      padding: 10px;
+      border: 0;
+      font-size: 1.2em;
+      cursor: pointer;
+    }
+    .create-blog button:hover{
+      background: #292929;
+    }
+
+    
