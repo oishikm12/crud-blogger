@@ -2,4 +2,4 @@
 
 WTL Mini Project portraying server rendered website for sample blogging purposes
 
-Technologies - Node, Mongo, Handlebars
+Technologies - Node, Mongo, EJS

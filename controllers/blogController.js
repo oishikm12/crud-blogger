@@ -164,7 +164,7 @@ const blogUpdate = asyncHandler(async (req, res) => {
   const { id } = req.params
   const blog = await Blog.findById(id)
 
-  // Changes accoridng to daya provided
+  // Changes accoridng to data provided
   if (blog) {
     blog.title = body.title ? body.title : blog.title
     blog.snippet = body.snippet ? body.snippet : blog.snippet
